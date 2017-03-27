@@ -10,7 +10,7 @@
 # Also, for your post bylines, add author info for yourself in `_data/authors.yml`.
 # (Using that method instead of site.owner, in case your posts get cloned with your repo.)
 
-# Site settings
+# SITE SETTINGS
 title: dataishuman
 description: A website on the human side of data
 owner:
