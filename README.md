@@ -1,48 +1,97 @@
-## arkadianriver.com
+# [dataishuman](https://dataishuman.github.io)
 
-My personal web site, based off the http://html5up.net/spectral design by
-[@ajlkn](http://twitter.com/ajlkn).
-The site is made for blog and portfolio content. The blog can contain both
-personal entries and entries by syndicated authors.
-The site uses jekyll, a method of creating and maintaining a web site,
-which works by using local templates to generate static files that you upload
-and sync with your remote site.
-This repo is the same code I use for my site, excluding my posts.
+dataishuman is a website on the human side of data. 
 
-### If you clone or fork this repo to use it:
+## What is it
 
-0. Install [Jekyll](https://jekyllrb.com/) (version 3.1.2 or higher).
+Primarily a collection of data works on open data, or data we retrieve from public sources and API's, with the underlying intention of visualising relations non trivial to spot. It is fundamentally a show of data.
 
-0. Tweak the site to make it your own. Jekyll uses [YAML files](http://www.yaml.org/start.html)
-   for its site variables:
+## How it is built
 
-   a. Edit the `_config.yml` file, replacing the values for each key with your info.
+With the HTML5 [Spectral theme](https://html5up.net/spectral) by [@ajlkn](https://twitter.com/ajlkn) and forking from [arkadianriver](https://github.com/arkadianriver/arkadianriver.com), to whom goes all of the gratitude for making this template available and writing very useful documentation on how to customise it, part of which is reported here.
 
-   b. Add a `_data/tokens.yml` file with your IDs & mail program.
-      See the `_data/tokens-template.yml.` file for example entries.
+All the visualisations are built in [D3](https://d3js.org).
 
-   c. Add author info for yourself in `_data/authors.yml` as the first
-      author entry in the file.
+## How to run it
 
-   d. Provide your own images.
-   
-   e. Continue tweaking to your heart's desire, or not.
+With Jekyll installed, 
 
-0. Create your posts:
+`bundle exec jekyll serve`
 
-   a. Use the posts in the 31st century as guides for yours. They're built by jekyll only when
-      the `--future` option is used.
+## Posts and their categories
 
-   b. You can run `ruby compose.rb` to create new draft posts.
+Data "posts" are in category "pieces". Posts (in `_posts`) have category name in front, see folder. 
 
-0. Test and publish your site:
+Other categories can be created. Category corresponds to a page in `_pages`.
 
-   If you're building your site on Windows (like me) and you use WinSCP to sync with your
-   remote site, you can use the `site.bat` file. Set up a `_site.env` file
-   as described in the comments of `site.bat` and change the excludes list for your site.
+### YAML front matter
 
-   `site dev` runs `jekyll serve --future --drafts` in development mode.  
-   `site devnof` runs `jekyll serve --drafts` in development mode.  
-   `site preview` runs `jekyll serve` in production mode.  
-   `site prod` simply builds with `jekyll build` in production mode (no serve).  
-   `site publish` uses WinSCP's `synchronize` feature to mirror to a remote site.
+Fields are:
+
+* `layout`: optional for post or pages (defaults in `_config.yml`), useful for posts outside posts or pages
+
+* `title`: title of post
+
+* `categories`: category post belongs to 
+
+* `excerpt`: small description of post
+
+* `background-image`: file (in `_images/`) of background image if desired
+
+* `tags`: one per line, tags of post
+
+* `author`: to display the snippet in `_data/authors.yml`
+
+* `options`: to customize page, options are
+   - minihead      # as minimal a title as possible, and no date printed
+   - fullwidth     # leaving only a tiny margin on all media sizes
+   - nocomment     # disable disqus comments for this post
+   - nomenu        # for pages, don't add to the menu
+   - nolanding     # for pages and featured posts, don't add to the landing page
+
+* `changefreq`: the default change frequency for all pages in the site map is `monthly`. Depending on how often you think you'll edit a page, you can set the page change frequency. See [why](https://www.v9seo.com/blog/2011/12/27/sitemap-xml-why-changefreq-priority-are-important/) this is important. 
+
+* `key`: all files in the `_pages` folder are displayed in the nav menu unless you set the `nomenu` option. Use `key` to specify the order (an integer) you want the pages listed in the nav menu. Values are sorted in ascending order.
+
+* `lastmod`, `date`: if you want the site map `lastmod` setting to be updated, you can set one or both of these to your new modified date as `YYYY-MM-DD HH:MM:SS +/-TTTT` (`lastmod` has priority). If you use `date`, the date shown on the page is also modified, overriding the date in the filename. The timestamp is assumed to be UTC unless you specify the time zone offset afterward. Example:
+
+```
+lastmod: 2016-03-13 23:11:00
+date: 2016-01-01 00:00:00 -0800
+```
+
+* `priority`: use `priority` (a float 0-1) to specify two things:
+   - the grouping in the pieces index
+   - the site map priority
+In the pieces index, the pieces are grouped by priority, listed by descending priority and by descending date within each priority. Note that pieces must have a priority set for the ordering to work, throws `can't compare float with nil` Jekyll error otherwise. Default priorities in the `sitemap.xml` file:
+   + `1.0` - Landing page
+   + `0.7` - posts
+   + `0.5` - Pages
+
+* `sitemap_exclude`: set to `yes` if you want to exclude a page from the sitemap.
+
+* `includes`: if your page needs to include stylesheets or scripts, provide 'em as either local or remote URLs. Prefix remote urls with `//`, not `http`. Stylesheets are included in the header and scripts at the bottom before the body closes.
+
+```
+style-includes:
+  - /local/path/to/stylesheet.css
+  - //remote.com/url/to/stylesheet.css
+script-includes:
+  - /local/path/to/script.js
+  - //remote.com/url/to/script.js
+```
+
+* `style, script`: these are useful when you want to embed styles and scripts outside of the `{% raw %}{{ content }}{% endraw %}` area. Use the yaml `|` indented block to ensure line breaks are preserved. The styles are included in the header below stylesheet includes; scripts are included at the bottom below script includes.
+
+```
+style: |
+  /* some css block here */
+  .some-class {
+    somestyle: definition;
+  }
+script: |
+  // some script block here...
+  $(document).ready(function(){
+    ...
+  });
+```

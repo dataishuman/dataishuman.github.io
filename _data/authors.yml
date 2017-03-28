@@ -1,11 +1,10 @@
 # authors
 
-arkadianriver:
-  name: Gary Faircloth
+martinapugliese:
+  name: Martina Pugliese
   bio: >
-    Interests: tech writing, programming, science, history.
-    You might also find me playing some PC Ga&mdash;SQUIRREL!
-  disqus_shortname: arkadianriver
-  url: http://arkadianriver.com
-  email: gfair@arkadianriver.com
-  avatar: gar.png
+    I am a Data Scientist, I love data in general and even more when it's used for good. I also fancy visualising it, like a lot.
+  #disqus_shortname: arkadianriver
+  url: https://martinapugliese.github.io
+  #email: gfair@arkadianriver.com
+  avatar: dummy.jpg

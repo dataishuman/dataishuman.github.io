@@ -1,0 +1,33 @@
+---
+key: 1
+title: Pieces
+permalink: /pieces/
+excerpt: The data works
+image: dummy.jpg
+background-image: dummy.jpg
+---
+
+{%
+if site.categories.pieces %}
+<div class="table-wrapper">
+  <table>
+    <tbody>{%
+      include fn_groupsort_reverse.html unsorted=site.categories.pieces groupby='priority' sortby='date'
+%}{%  for piece in sorted_list %}
+      <tr>
+        <td><b><a href="{{ piece.url | prepend: site.baseurl }}">{{ piece.title }}</a></b></td>
+        <td>{{ piece.date | date: "%b %Y" }}</td>
+        <td>{{ piece.excerpt | strip_html | truncatewords: 12 }}</td>
+        <td>
+          {% include techlist.html %}
+        </td>
+      </tr>{%
+      endfor %}
+    </tbody>
+  </table>
+</div>{%
+  if site.works_in_progress %}
+  <div class="works_inprogress">More coming soon!</div>{%
+  endif %}{%
+endif
+%}
