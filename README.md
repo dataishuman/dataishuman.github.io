@@ -8,7 +8,7 @@ Primarily a collection of data works on open data, or data we retrieve from publ
 
 ## How it is built
 
-With the HTML5 [Spectral theme](https://html5up.net/spectral) and forking from [arkadianriver](https://github.com/arkadianriver/arkadianriver.com), to whom goes all of the gratitude for making this template available and writing very useful documentation on how to customise it, part of which is reported here.
+With the HTML5 [Spectral theme](https://html5up.net/spectral) by [@ajlkn](https://twitter.com/ajlkn) and forking from [arkadianriver](https://github.com/arkadianriver/arkadianriver.com), to whom goes all of the gratitude for making this template available and writing very useful documentation on how to customise it, part of which is reported here.
 
 All the visualisations are built in [D3](https://d3js.org).
 
@@ -95,13 +95,3 @@ script: |
     ...
   });
 ```
-
-## TODOs
-
-   b. Add a `_data/tokens.yml` file with your IDs & mail program.
-      See the `_data/tokens-template.yml.` file for example entries.
-
-   c. Add author info for yourself in `_data/authors.yml` as the first
-      author entry in the file.
-
-
