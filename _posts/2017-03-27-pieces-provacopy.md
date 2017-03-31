@@ -3,7 +3,6 @@ layout: post
 title:  "Testing d3 with Markdown"
 categories: pieces
 excerpt: testing the test
-background-image: dummy.jpg
 tags:
   - test
   - testing
