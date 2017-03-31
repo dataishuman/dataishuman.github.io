@@ -14,7 +14,7 @@ url: "https://dataishuman.github.io"
 # GREETING ON LANDING PAGE
 greeting:
   title: What is this, and why
-  text: We believe the world has many stories to tell, and data for good is our way.
+  text: We believe the world has many stories to tell, and data is its language.
 
 
 # WHO ARE WE ON LANDING PAGE
@@ -23,8 +23,8 @@ greeting:
 
 
 # CONTACT ON LANDING PAGE
-closing-head: Contact us?
-closing-para: We always love a good chat, talk to us
+closing-head: Talk to us
+closing-para: We always love a good chat
 
 
 # SOCIAL BUTTONS ON ALL PAGES
